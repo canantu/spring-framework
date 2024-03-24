@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+
+</head>
+
+<body>
+    <h2>Registration</h2>
+
+    <!-- Concatenation -->
+    <h2 th:text="${ 'Welcome ' + students.get(0).firstname}"></h2>
+
+    <!-- Displaying values-->
+    <h2 th:text="${students.get(0).firstname}"></h2>
+    <h2 th:text="${students.get(0).lastname}"></h2>
+
+    <!-- Links -->
+
+    <a th:href="@{https://www.cydeo.com}">Cydeo Home Page</a><br>
+    <a th:href="@{/student/welcome}">Welcome Page</a><br>
+
+    <!--Adding parameters to Links-->
+
+    <a th:href="@{/student/welcome(firstname=${students.get(0).firstname})}">Link1</a><br>
+    <a th:href="@{/student/welcome(lastname=${students.get(0).lastname})}">Link2</a>
+
+    <ul>
+        <li th:each="student : ${students}" th:text="${student.firstname}"></li>
+    </ul>
+    <br>
+    <table id="Student Table" class="table">
+        <thead>
+        <tr>
+            <th>Firstname</th>
+            <th>Lastname</th>
+            <th>Age</th>
+            <th>State</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="student: ${students}">
+            <td th:text="${student.firstname}"></td>
+            <td th:text="${student.lastname}"></td>
+            <td th:text="${student.age}"></td>
+            <td th:text="${student.state}"></td>
+        </tr>
+        </tbody>
+    </table>
+
+
+
+
+</body>
+</html>
