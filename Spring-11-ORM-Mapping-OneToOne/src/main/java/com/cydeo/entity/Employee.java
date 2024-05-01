@@ -15,15 +15,30 @@ public class Employee extends BaseEntity{
 
     @Column(length = 50)
     private String firstName;
+
     @Column(length = 50)
     private String lastName;
+
     @Column(length = 50)
     private String email;
+
     @Column(columnDefinition = "DATE")
     private LocalDate hireDate;
+
+    private Integer salary;
+
     @Enumerated(EnumType.STRING)
     private Gender gender;
-    private Integer salary;
+
+
+    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+    @JoinColumn(name = "department_id")
+    private Department department;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "region_id")
+    private Region region;
+
 
     public Employee(String firstName, String lastName, String email, LocalDate hireDate, Integer salary, Gender gender) {
         this.firstName = firstName;
@@ -32,6 +47,5 @@ public class Employee extends BaseEntity{
         this.hireDate = hireDate;
         this.salary = salary;
         this.gender = gender;
-
     }
 }
