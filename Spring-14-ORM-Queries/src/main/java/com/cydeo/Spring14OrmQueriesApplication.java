@@ -10,4 +10,5 @@ public class Spring14OrmQueriesApplication {
         SpringApplication.run(Spring14OrmQueriesApplication.class, args);
     }
 
+
 }

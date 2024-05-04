@@ -10,15 +10,10 @@ import java.util.List;
 @Table(name = "regions")
 @NoArgsConstructor
 @Data
-public class Region {
-
-    @Id
-    private Long id;
+public class Region extends BaseEntity{
 
     private String region;
     private String country;
 
-    @OneToMany(mappedBy = "region", fetch = FetchType.LAZY)
-    private List<Employee> employee;
 
 }
