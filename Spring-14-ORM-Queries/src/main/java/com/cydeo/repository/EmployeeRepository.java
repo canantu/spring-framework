@@ -1,9 +1,12 @@
 package com.cydeo.repository;
 
 import com.cydeo.model.Employee;
+import jakarta.transaction.Transactional;
 import org.springframework.cglib.core.Local;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDate;
@@ -83,7 +86,20 @@ public interface EmployeeRepository extends JpaRepository<Employee, Long> {
     // sorting desc
     @Query("select e from Employee e order by e.salary desc ")
     List<Employee> getEmployeeSalaryOrderDesc();
+    @Query(value = "select * from employees where salary = ?1", nativeQuery = true)
+    List<Employee> readEmployeeDetailBySalary(int salary);
 
+    @Query(value = "select e from employees where e.salary = :salary", nativeQuery = true)
+    List<Employee> getEmployeeSalary(@Param("salary") int salary);
 
+    @Modifying
+    @Transactional
+    @Query("update Employee e set e.email ='admin@cydeo.com' where e.id = :id")
+    void updateEmployeeJPQL(@Param("id") int id);
+
+    @Modifying
+    @Transactional
+    @Query(value = "update employees set e.email ='admin@cydeo.com' where e.id = :id", nativeQuery = true)
+    void updateEmployeeNativeQuery(@Param("id") int id);
 
 }
