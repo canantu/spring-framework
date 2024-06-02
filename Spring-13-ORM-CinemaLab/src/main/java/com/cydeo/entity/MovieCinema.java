@@ -1,15 +1,16 @@
-package com.cydeo.model;
+package com.cydeo.entity;
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 public class MovieCinema extends BaseEntity{
 
@@ -22,6 +23,10 @@ public class MovieCinema extends BaseEntity{
     @ManyToOne(fetch = FetchType.LAZY)
     private Cinema cinema;
 
-    @OneToMany(mappedBy = "movieCinema")
-    private List<Ticket> ticket;
+    @Override
+    public String toString() {
+        return "MovieCinema{" +
+                "dateTime=" + dateTime +
+                '}';
+    }
 }

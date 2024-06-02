@@ -1,8 +1,6 @@
-package com.cydeo.model;
+package com.cydeo.entity;
 
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @MappedSuperclass
 public class BaseEntity {
