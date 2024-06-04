@@ -4,6 +4,7 @@ import com.cydeo.entity.Account;
 import com.cydeo.enums.UserRole;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -53,9 +54,20 @@ public interface AccountRepository extends JpaRepository<Account, Long> {
     // ------------------- Native QUERIES ------------------- //
 
     //Write a native query to read all accounts with an age lower than a specific value
+    @Query(value = "SELECT * FROM account_details WHERE age < ?1", nativeQuery = true)
+    List<Account> retrieveAllBasedAge(Integer age);
 
     //Write a native query to read all accounts that a specific value can be containable in the name, address, country, state city
+    @Query(value = "SELECT * FROM account_details WHERE LOWER(name) ILIKE LOWER(concat('%',?1,'%'))" +
+            "OR address ILIKE concat('%',?1,'%')" +
+            "OR country ILIKE concat('%',?1,'%')" +
+            "OR state ILIKE concat('%',?1,'%')" +
+            "OR city ILIKE concat('%',?1,'%')",
+            nativeQuery = true)
+    List<Account> retrieveBySearchCriteria(String pattern);
 
-    //Write a native query to read all accounts with an age lower than a specific value
+    //Write a native query to read all accounts with an age higher than a specific value
+    @Query(value = "SELECT * FROM account_details WHERE age > :age", nativeQuery = true)
+    List<Account> retrieveAllBasedAgeHigher(@Param("age") Integer age);
 
 }
