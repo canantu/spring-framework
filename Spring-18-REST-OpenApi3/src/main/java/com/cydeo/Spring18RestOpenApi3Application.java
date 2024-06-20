@@ -10,4 +10,5 @@ public class Spring18RestOpenApi3Application {
         SpringApplication.run(Spring18RestOpenApi3Application.class, args);
     }
 
+
 }
