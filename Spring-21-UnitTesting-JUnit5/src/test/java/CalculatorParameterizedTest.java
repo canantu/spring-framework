@@ -1,4 +1,5 @@
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.*;
 
@@ -11,6 +12,7 @@ public class CalculatorParameterizedTest {
 
     @ParameterizedTest
     @ValueSource(ints = {3,6,10})
+    @Tag("Tagged Test")
     void testCase2(int args){
         Assertions.assertEquals(0, args % 3);
     }
@@ -58,7 +60,13 @@ public class CalculatorParameterizedTest {
         Assertions.assertEquals(result, Calculator.add(num1, num2));
     }
 
+/*
+Maven Commands:
 
+mvn -Dtest=TestCircle#mytest test
+mvn-surefire-plugin
+mvn clean test
+ */
 
 
 
