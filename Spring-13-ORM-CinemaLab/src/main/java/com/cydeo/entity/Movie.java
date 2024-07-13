@@ -27,7 +27,7 @@ public class Movie extends BaseEntity{
     private MovieState state;
 
     @Column(columnDefinition = "DATE")
-    private LocalDate release_date;
+    private LocalDate releaseDate;
 
     private Integer duration;
     private String summary;
@@ -43,7 +43,7 @@ public class Movie extends BaseEntity{
                 ", price=" + price +
                 ", type=" + type +
                 ", state=" + state +
-                ", release_date=" + release_date +
+                ", release_date=" + releaseDate +
                 ", duration=" + duration +
                 ", summary='" + summary + '\'' +
                 '}';
