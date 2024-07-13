@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 @Getter
@@ -14,7 +15,7 @@ import java.time.LocalDate;
 public class Ticket extends BaseEntity{
 
     @Column(columnDefinition = "TIMESTAMP")
-    private LocalDate dateTime;
+    private LocalDateTime dateTime;
 
     private Integer seatNumber;
     private Integer rowNumber;
