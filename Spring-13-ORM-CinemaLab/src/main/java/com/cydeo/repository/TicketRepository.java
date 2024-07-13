@@ -28,7 +28,7 @@ public interface TicketRepository extends JpaRepository<Ticket, Long> {
     List<Ticket> fetchAllTicketsByUserAccount(Long id);
     //Write a JPQL query that returns all tickets between a range of dates
     @Query("select t from Ticket t where t.dateTime between ?1 and ?2")
-    List<Ticket> fetchAllTicketsBetweenRangeOFDates(LocalDateTime start, LocalDateTime end);
+    List<Ticket> fetchAllTicketsBetweenRangeOfDateTimes(LocalDateTime start, LocalDateTime end);
     // ------------------- Native QUERIES ------------------- //
 
     //Write a native query to count the number of tickets a user bought
