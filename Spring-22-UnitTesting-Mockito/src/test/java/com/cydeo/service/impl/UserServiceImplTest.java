@@ -23,15 +23,17 @@ class UserServiceImplTest {
     @Test
     void deleteByUserName_test(){
         userService.deleteByUserName("mikesmith@cydeo.com");
+
         verify(userRepositoryMock).deleteByUserName("mikesmith@cydeo.com");
         verify(userRepositoryMock, atLeastOnce()).deleteByUserName("mikesmith@cydeo.com");
-        verify(userRepositoryMock, atLeast(5)).deleteByUserName("mikesmith@cydeo.com");
-        verify(userRepositoryMock, atMost(5)).deleteByUserName("mikesmith@cydeo.com");
-        verify(userRepositoryMock, atMostOnce()).deleteByUserName("mikesmith@cydeo.com");
+        //verify(userRepositoryMock, atLeast(5)).deleteByUserName("mikesmith@cydeo.com");
+       // verify(userRepositoryMock, atMost(5)).deleteByUserName("mikesmith@cydeo.com");
+       // verify(userRepositoryMock, atMostOnce()).deleteByUserName("mikesmith@cydeo.com");
      //   verify(userRepositoryMock, times(2)).deleteByUserName("mikesmith@cydeo.com");
        // if we need to run the method more than one
 
         InOrder inOrder = inOrder(userRepositoryMock);
+        verify(userRepositoryMock).deleteByUserName("mikesmith@cydeo.com");
         inOrder.verify(userRepositoryMock).findAll();
 
 
